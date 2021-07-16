@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
 import useStyles from "./useStyles";
 import {
@@ -9,17 +9,11 @@ import {
   FormControl,
   FormLabel,
 } from "@material-ui/core";
-const Text = ({ question, answers, setAnswers }) => {
+const Number = ({ question, setAnswers }) => {
   const classes = useStyles();
-  const formik = useFormik({
-    initialValues: {
-      answer: "",
-    },
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-    },
-  });
-  const handleBlur = (event) => {
+  const [value, setValue] = useState(0);
+  const handleChange = (event) => {
+    setValue(event.target.value);
     setAnswers((state) => [...state, event.target.value]);
   };
   return (
@@ -40,22 +34,18 @@ const Text = ({ question, answers, setAnswers }) => {
           </span>
         </Typography>
         <br></br>
-        <form onSubmit={formik.handleSubmit} className={classes.question}>
-          <textarea
-            rows="5"
-            cols="100"
-            id="answer"
-            placeholder="Write your answer here..."
-            name="answer"
-            type="answer"
-            onChange={formik.handleChange}
-            value={formik.values.answer}
-            onBlur={handleBlur}
-          />
-          <input type="submit" value="submit"></input>
-        </form>
+        <input
+          type="number"
+          id="ans"
+          className={classes.question}
+          min="0"
+          max="10"
+          value={value}
+          onChange={handleChange}
+          placeholder="0"
+        />
       </FormControl>
     </div>
   );
 };
-export default Text;
+export default Number;
