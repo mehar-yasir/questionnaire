@@ -15,7 +15,7 @@ function Header(props) {
         padding: "20px",
       }}
     >
-      <Typography variant="h4">Survey for Freelancing</Typography>
+      <Typography variant="h4">JavaScript Quiz</Typography>
       <Typography variant="h6" style={{ marginTop: "10px" }}>
         Attempt All Questions
       </Typography>
