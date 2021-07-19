@@ -1,7 +1,5 @@
 const fetchData = () => {
-  return fetch("https://dataapis.herokuapp.com/questionnaire/", {
-    mode: "no-cors",
-  })
+  return fetch("https://dataapis.herokuapp.com/questionnaire/")
     .then((response) => response.json())
     .then((data) => console.log(data));
 };
