@@ -107,7 +107,7 @@ function Questionnnaire() {
       <Button
         variant="contained"
         color="primary"
-        onClick={() => console.log(JSON.stringify(answers))}
+        onClick={() => alert(JSON.stringify(answers))}
         style={{ float: "left", marginTop: "2%" }}
       >
         Submit
