@@ -1,45 +1,28 @@
 import React, { useState } from "react";
-import { useFormik } from "formik";
 import useStyles from "./useStyles";
-import {
-  Typography,
-  Container,
-  RadioGroup,
-  FormControlLabel,
-  FormControl,
-  FormLabel,
-} from "@material-ui/core";
-const Number = ({ question, setAnswers }) => {
+import { Typography, FormControl, TextField } from "@material-ui/core";
+const Number = ({ question, setAnswers, answers, index }) => {
   const classes = useStyles();
   const [value, setValue] = useState(0);
   const handleChange = (event) => {
     setValue(event.target.value);
-    setAnswers((state) => [...state, event.target.value]);
+    let newArr = [...answers]; // copying the old datas array
+    newArr[index] = event.target.value;
+    setAnswers(newArr);
   };
   return (
-    <div
-      style={{
-        backgroundColor: "white",
-        borderRadius: "10px",
-        padding: "20px",
-      }}
-    >
+    <div className={classes.outer}>
       <FormControl component="fieldset">
-        <Typography variant="h4" component="h2">
+        <Typography variant="h5">
           {question.title}
-          <span
-            style={{ marginLeft: "25px", fontSize: "x-large", color: "grey" }}
-          >
-            {question.weight} Marks
-          </span>
+          <span className={classes.span}>{question.weight} Marks</span>
         </Typography>
-        <br></br>
-        <input
+
+        <TextField
           type="number"
           id="ans"
           className={classes.question}
-          min="0"
-          max="10"
+          InputProps={{ inputProps: { min: 0, max: 10 } }}
           value={value}
           onChange={handleChange}
           placeholder="0"
