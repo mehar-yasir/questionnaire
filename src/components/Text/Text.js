@@ -24,7 +24,6 @@ const Text = ({ question, answers, setAnswers, index }) => {
           {question.title}
           <span className={classes.span}>{question.weight} Marks</span>
         </Typography>
-        {console.log(index.toString())}
         <TextField
           id={index.toString()}
           name="answer"
